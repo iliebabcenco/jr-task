@@ -59,7 +59,14 @@ public class PlayerServiceImpl implements PlayerService {
                 p.getExperience() == 0 && p.getLevel() == 0 && p.getUntilNextLevel() == 0) {
             return false;
         }
-        Player player = getPlayerById(id);
+
+        if (id <= 0)
+            throw new InvalidDataAccessApiUsageException("Error id <= 0");
+
+        Player player = null;
+        if (repository.findById(id).isPresent()) {
+            player = repository.findById(id).get();
+        }
         List<Race> raceValues = Arrays.asList(Race.values());
         List<Profession> profValues = Arrays.asList(Profession.values());
 
