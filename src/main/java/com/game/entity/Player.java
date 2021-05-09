@@ -1,6 +1,5 @@
 package com.game.entity;
 
-import org.jetbrains.annotations.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
