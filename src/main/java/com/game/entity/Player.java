@@ -15,18 +15,14 @@ public class Player {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long id;
     @Column(name="name")
-    @NotNull
     private String name;
     @Column(name="title")
-    @NotNull
     private String title;
     @Column(name="race")
     @Enumerated(EnumType.STRING)
-    @NotNull
     private Race race;
     @Column(name="profession")
     @Enumerated(EnumType.STRING)
-    @NotNull
     private Profession profession;
     @Column(name="birthday")
     @DateTimeFormat
