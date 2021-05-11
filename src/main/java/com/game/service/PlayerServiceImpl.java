@@ -101,18 +101,15 @@ public class PlayerServiceImpl implements PlayerService {
             player.setProfession(p.getProfession());
         }
 
-        if (p.isBanned()) {
-            player.setBanned(true);
-        } else {
-            player.setBanned(false);
-        }
+        player.setBanned(p.isBanned());
+
         try {
             if (p.getBirthday() != null && (p.getBirthday().compareTo(new SimpleDateFormat("yyyy-MM-dd").parse("2000-01-01")) < 0
                     || p.getBirthday().compareTo(new SimpleDateFormat("yyyy-MM-dd").parse("3000-01-01")) > 0
             )) {
                 throw new SQLException("Invalid value for birthday");
             } else if (p.getBirthday() != null) {
-                player.setBirthday(p.getBirthday());
+                player.setBirthday(new Date(p.getBirthday().getTime()));
             }
         } catch (ParseException e) {
             e.printStackTrace();

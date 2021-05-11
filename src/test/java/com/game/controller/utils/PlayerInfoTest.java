@@ -61,18 +61,11 @@ public class PlayerInfoTest {
 
     @Override
     public String toString() {
-//        LocalDate birthday = Instant.ofEpochMilli(this.birthday).atZone(ZoneId.systemDefault()).toLocalDate();
-        return "Player{" +
+        LocalDate birthday = Instant.ofEpochMilli(this.birthday).atZone(ZoneId.systemDefault()).toLocalDate();
+        return "PlayerInfoTest{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", title='" + title + '\'' +
-                ", race=" + race +
-                ", profession=" + profession +
                 ", birthday=" + birthday +
-                ", banned=" + banned +
-                ", experience=" + experience +
-                ", level=" + level +
-                ", untilNextLevel=" + untilNextLevel +
                 '}';
     }
 }
