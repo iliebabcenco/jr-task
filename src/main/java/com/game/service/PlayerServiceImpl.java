@@ -15,6 +15,9 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -102,14 +105,13 @@ public class PlayerServiceImpl implements PlayerService {
         }
 
         player.setBanned(p.isBanned());
-
         try {
             if (p.getBirthday() != null && (p.getBirthday().compareTo(new SimpleDateFormat("yyyy-MM-dd").parse("2000-01-01")) < 0
                     || p.getBirthday().compareTo(new SimpleDateFormat("yyyy-MM-dd").parse("3000-01-01")) > 0
             )) {
                 throw new SQLException("Invalid value for birthday");
             } else if (p.getBirthday() != null) {
-                player.setBirthday(new Date(p.getBirthday().getTime()));
+                player.setBirthday(p.getBirthday());
             }
         } catch (ParseException e) {
             e.printStackTrace();

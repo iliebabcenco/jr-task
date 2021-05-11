@@ -25,6 +25,7 @@ public class Player {
     private Profession profession;
     @Column(name="birthday")
     @DateTimeFormat
+    @Temporal(TemporalType.DATE)
     private Date birthday;
     @Column(name="banned")
     private boolean banned;
