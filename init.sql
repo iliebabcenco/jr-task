@@ -14,7 +14,7 @@ CREATE TABLE player
     title          VARCHAR(30) NULL,
     race           VARCHAR(20) NULL,
     profession     VARCHAR(20) NULL,
-    birthday       DATE        NULL,
+    birthday       TIMESTAMP   NULL,
     banned         BIT(1)      NULL,
     experience     INT(10)     NULL,
     level          INT(3)      NULL,
