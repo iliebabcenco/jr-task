@@ -111,7 +111,7 @@ public class PlayerServiceImpl implements PlayerService {
             )) {
                 throw new SQLException("Invalid value for birthday");
             } else if (p.getBirthday() != null) {
-                player.setBirthday(p.getBirthday());
+                player.setBirthday(new Date(p.getBirthday().getTime()));
             }
         } catch (ParseException e) {
             e.printStackTrace();
