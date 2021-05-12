@@ -12,7 +12,7 @@ import java.util.List;
 public interface PlayerService {
 
     boolean savePlayer(Player p) throws SQLException;
-    boolean updatePlayer(long id, Player p) throws SQLException;
+    Player updatePlayer(long id, Player p) throws SQLException;
     List<Player> findAll(PlayerOrder order, PageRequest pg);
     Player getPlayerById(long id) throws SQLException;
     boolean removePlayer(long id) throws SQLException;

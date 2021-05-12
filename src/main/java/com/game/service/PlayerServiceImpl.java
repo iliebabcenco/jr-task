@@ -11,13 +11,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
-import java.util.Date;
+import java.util.*;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.List;
-import java.util.NoSuchElementException;
 
 @Repository
 public class PlayerServiceImpl implements PlayerService {
@@ -53,12 +50,8 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public boolean updatePlayer(long id, Player p) throws SQLException {
-        if (p.getName() == null && p.getTitle() == null && p.getRace() == null
-                && p.getProfession() == null && p.getBirthday() == null && !p.isBanned() &&
-                p.getExperience() == 0 && p.getLevel() == 0 && p.getUntilNextLevel() == 0) {
-            return false;
-        }
+    public Player updatePlayer(long id, Player p) throws SQLException {
+
 
         if (id <= 0)
             throw new InvalidDataAccessApiUsageException("Error id <= 0");
@@ -66,6 +59,11 @@ public class PlayerServiceImpl implements PlayerService {
         Player player = null;
         if (repository.findById(id).isPresent()) {
             player = repository.findById(id).get();
+        }
+        if (p.getName() == null && p.getTitle() == null && p.getRace() == null
+                && p.getProfession() == null && p.getBirthday() == null && !p.isBanned() &&
+                p.getExperience() == 0 && p.getLevel() == 0 && p.getUntilNextLevel() == 0) {
+            return player;
         }
         List<Race> raceValues = Arrays.asList(Race.values());
         List<Profession> profValues = Arrays.asList(Profession.values());
@@ -108,6 +106,7 @@ public class PlayerServiceImpl implements PlayerService {
             )) {
                 throw new SQLException("Invalid value for birthday");
             } else if (p.getBirthday() != null) {
+                Date pDate = p.getBirthday();
                 player.setBirthday(new Date(p.getBirthday().getTime()));
             }
         } catch (ParseException e) {
@@ -121,7 +120,7 @@ public class PlayerServiceImpl implements PlayerService {
             player.setUntilNextLevel(50 * (player.getLevel() + 1) * (player.getLevel() + 2) - player.getExperience());
         }
         repository.save(player);
-        return true;
+        return player;
 
     }
 

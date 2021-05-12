@@ -149,8 +149,8 @@ public class PlayerController {
     @PostMapping("/players/{id}")
     public ResponseEntity<Player> updateUser(@PathVariable("id") long id, @RequestBody Player player) {
         try {
-            playerService.updatePlayer(id, player);
-            return new ResponseEntity<>(playerService.getPlayerById(id), HttpStatus.OK);
+            Player upPlayer = playerService.updatePlayer(id, player);
+            return new ResponseEntity<>(upPlayer, HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         } catch (SQLException | InvalidDataAccessApiUsageException i) {
