@@ -23,9 +23,9 @@ public class Player {
     @Column(name="profession")
     @Enumerated(EnumType.STRING)
     private Profession profession;
+//    @DateTimeFormat
+//    @Temporal(TemporalType.DATE)
     @Column(name="birthday")
-    @DateTimeFormat
-    @Temporal(TemporalType.DATE)
     private Date birthday;
     @Column(name="banned")
     private boolean banned;
