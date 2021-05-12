@@ -1,1 +1,1 @@
-This is a task from JavaRush.ru for admission to their online internship.
+This is a task from JavaRush.ru which I solved for admission to their online internship.
