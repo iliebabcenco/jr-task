@@ -5,9 +5,7 @@ import com.game.entity.Player;
 import com.game.entity.Profession;
 import com.game.entity.Race;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 

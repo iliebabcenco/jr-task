@@ -1,18 +1,15 @@
 package com.game.repository;
 
-import com.game.controller.PlayerOrder;
 import com.game.entity.Player;
 import com.game.entity.Profession;
 import com.game.entity.Race;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 @Repository
